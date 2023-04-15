@@ -8,6 +8,9 @@ RUN apt-get update && \
     apt-get install -y python3 python3-pip python3.10-venv git libgl1-mesa-dev libglib2.0-0 && \
     rm -rf /var/lib/apt/lists/*
 
+# Copy the source code and any other necessary files
+COPY . .
+
 # Expose the port that the application will run on
 EXPOSE 7860
 
