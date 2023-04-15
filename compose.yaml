@@ -1,0 +1,16 @@
+services:
+  webui:
+    build: .
+    volumes:
+      - ./models:/app/models
+      - ./configs:/app/configs
+      - ./repositories:/app/repositories
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - capabilities: [gpu, utility]
+
+networks:
+  proxy:
+    external: true
