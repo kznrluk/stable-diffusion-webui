@@ -12,7 +12,7 @@ services:
       resources:
         reservations:
           devices:
-            - capabilities: [gpu, utility]
+            - capabilities: [gpu]
               count: all
               driver: nvidia
 
