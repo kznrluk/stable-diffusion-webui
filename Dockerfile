@@ -11,9 +11,6 @@ RUN apt-get update && \
 # Create a new user
 RUN useradd -m webui
 
-# Copy the installed packages from the builder stage
-COPY --from=builder --chown=webui:webui /usr/local /usr/local
-
 # Copy the source code and any other necessary files
 COPY --chown=webui:webui . .
 
