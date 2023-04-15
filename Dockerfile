@@ -11,9 +11,6 @@ RUN apt-get update && \
 # Expose the port that the application will run on
 EXPOSE 7860
 
-RUN chmod -R 777 .
-RUN chown -R webui .
-
 RUN python3 -m venv venv
 RUN ./venv/bin/pip3 install wheel
 RUN ./venv/bin/pip3 install --upgrade pip && \
