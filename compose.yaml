@@ -1,6 +1,7 @@
 services:
   webui:
     build: .
+    restart: always
     networks:
       - proxy
     volumes:
