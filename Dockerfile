@@ -24,8 +24,8 @@ USER webui
 
 RUN python3 -m venv venv
 RUN source ./venv/bin/activate
-RUN pip3 install --upgrade pip && \
-    pip3 install --no-cache-dir -r requirements.txt
+RUN ./venv/bin/pip3 install --upgrade pip && \
+    ./venv/bin/pip3 install --no-cache-dir -r requirements.txt
 
 # Set the entrypoint to webui.sh
-ENTRYPOINT ["python3", "./launch.py"]
+ENTRYPOINT ["./venv/bin/python3", "./launch.py"]
