@@ -12,7 +12,7 @@ RUN apt-get update && \
 COPY . .
 
 # Expose the port that the application will run on
-EXPOSE 7860
+EXPOSE 7861
 
 RUN python3 -m venv venv
 RUN ./venv/bin/pip3 install wheel
