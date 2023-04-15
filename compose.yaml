@@ -1,10 +1,13 @@
 services:
   webui:
     build: .
+    ports:
+      - 7860:7860
     volumes:
       - ./models:/app/models
       - ./configs:/app/configs
       - ./repositories:/app/repositories
+      - ./output:/app/output
     deploy:
       resources:
         reservations:

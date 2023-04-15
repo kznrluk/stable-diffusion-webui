@@ -1,18 +1,3 @@
-# Builder stage
-FROM nvidia/cuda:12.0.1-cudnn8-devel-ubuntu22.04 AS builder
-
-WORKDIR /app
-
-# Install python3 and pip
-RUN apt-get update && \
-    apt-get install -y python3 python3-pip && \
-    rm -rf /var/lib/apt/lists/*
-
-# Copy requirements.txt and install packages
-COPY requirements.txt ./
-RUN pip3 install --upgrade pip && \
-    pip3 install --no-cache-dir -r requirements.txt
-
 # Application stage
 FROM nvidia/cuda:12.0.1-cudnn8-runtime-ubuntu22.04
 
@@ -40,5 +25,10 @@ RUN chown -R webui .
 
 USER webui
 
+RUN python3 -m venv venv
+RUN source ./venv/bin/activate
+RUN pip3 install --upgrade pip && \
+    pip3 install --no-cache-dir -r requirements.txt
+
 # Set the entrypoint to webui.sh
-ENTRYPOINT ["./webui.sh"]
+ENTRYPOINT ["python3", "./launch.py"]
