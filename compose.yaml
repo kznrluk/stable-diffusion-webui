@@ -13,6 +13,7 @@ services:
         reservations:
           devices:
             - capabilities: [gpu, utility]
+              count: all
               driver: nvidia
 
 networks:
