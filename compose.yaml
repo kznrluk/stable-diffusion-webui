@@ -10,6 +10,7 @@ services:
         reservations:
           devices:
             - capabilities: [gpu, utility]
+              driver: nvidia
 
 networks:
   proxy:
