@@ -17,7 +17,8 @@ EXPOSE 7861
 RUN python3 -m venv venv
 RUN ./venv/bin/pip3 install wheel
 RUN ./venv/bin/pip3 install --upgrade pip && \
-    ./venv/bin/pip3 install --no-cache-dir -r requirements.txt
+    ./venv/bin/pip3 install --no-cache-dir -r requirements.txt && \
+    ./venv/bin/pip3 install -U xformers
 
 # Set the entrypoint to webui.sh
 ENTRYPOINT ["./venv/bin/python3", "./launch.py"]
