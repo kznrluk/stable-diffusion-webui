@@ -1,14 +1,19 @@
 services:
   webui:
     build: .
-    restart: always
+    command: "--listen --port 7861 --xformers --api --no-half-vae --disable-nan-check"
+    environment:
+      TZ: Asia/Tokyo
     networks:
       - proxy
+    restart: always
+    #entrypoint: "sleep 34529087"
+    #ports:
+    #  - 7861:7861
     volumes:
       - ./models:/app/models
       - ./configs:/app/configs
-      - ./repositories:/app/repositories
-      - ./outputs:/app/outputs
+      - /mnt/lda/armoire/sdweb:/app/outputs
     deploy:
       resources:
         reservations:
